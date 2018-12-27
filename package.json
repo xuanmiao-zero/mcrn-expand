@@ -1,0 +1,45 @@
+{
+  "name": "mcrn",
+  "version": "1.6.3",
+  "description": "RN For meicai",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiongcaichang/MCRN.git"
+  },
+  "author": "xiongcaichang",
+  "license": "MIT",
+  "dependencies": {
+    "react": "16.3.1",
+    "react-native": "0.55.3",
+    "react-native-extended-stylesheet": "0.8.1",
+    "react-native-root-toast": "3.0.1",
+    "react-native-storage": "0.2.2",
+    "react-navigation": "2.17.0",
+    "react-navigation-redux-helpers": "2.0.8",
+    "react-redux": "5.0.7",
+    "redux": "4.0.0",
+    "redux-action-tools": "1.2.2",
+    "redux-actions": "2.4.0",
+    "redux-logger": "3.0.6",
+    "redux-thunk": "2.3.0",
+    "redux-persist": "5.10.0",
+    "babel-plugin-module-resolver": "3.1.1",
+    "react-native-mc-splash-screen": "3.1.1",
+    "babel-plugin-transform-decorators-legacy": "1.3.5",
+    "babel-preset-react-native": "4.0.0",
+    "mcrn-ui": "0.0.6"
+  },
+  "devDependencies": {
+    "eslint-config-mcrn": "*",
+    "pre-commit": "^1.2.2",
+    "redux-devtools-extension": "^2.13.7"
+  },
+  "bugs": {
+    "url": "https://github.com/xiongcaichang/MCRN/issues"
+  },
+  "homepage": "https://github.com/xiongcaichang/MCRN#readme"
+}

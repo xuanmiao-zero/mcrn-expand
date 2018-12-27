@@ -1,0 +1,24 @@
+{
+  "extends": "eslint-config-mcrn",
+  "globals": {
+    "__DEV__": false,
+    "fetch": false,
+    "navigator": false,
+    "store": false,
+    "mconnect": false,
+    "screen": false
+  },
+  "rules": {
+    "semi": "off",
+    "prefer-rest-params": "off",  //已使用全面使用ES6 https://eslint.org/docs/rules/prefer-rest-params
+    "no-unused-expressions": ["error", {
+      "allowShortCircuit": true,
+      "allowTernary": true
+    }],
+    "arrow-parens": "off",
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }], // 允许在for循环的最后一个表达式中使用 ++ 和 --
+    "react/no-multi-comp": "off", //防止每个文件有多个组件定义
+    "no-nested-ternary": "off"
+  }
+}
+  
