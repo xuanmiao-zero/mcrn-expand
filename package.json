@@ -1,6 +1,6 @@
 {
   "name": "mcrn-expand",
-  "version": "1.7.3",
+  "version": "1.7.4",
   "description": "RN For meicai",
   "main": "index.js",
   "scripts": {
@@ -13,8 +13,6 @@
   "author": "xuanmiaoshuo",
   "license": "MIT",
   "dependencies": {
-    "react": "16.3.1",
-    "react-native": "0.55.3",
     "react-native-extended-stylesheet": "0.8.1",
     "react-native-root-toast": "3.0.1",
     "react-native-storage": "0.2.2",
