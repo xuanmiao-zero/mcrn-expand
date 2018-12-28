@@ -8,7 +8,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import { createReactNavigationReduxMiddleware, createNavigationReducer } from 'react-navigation-redux-helpers';
 import AppNavigator from 'MCConfig/Navigator';
 import * as reducerothers from 'MCReducer';
-import { autoCacheModule_prd as cacheModule } from 'MCConfig/app.json';
+import { autoCacheModule_prd as cacheModule, haveReactNativeDebugger } from 'MCConfig/app.json';
 import * as systemReducers from './reducer';
 import screentraker from './middleware/screenTraker';
 import promiseMiddleWare from './middleware/promise';
@@ -36,12 +36,15 @@ const persistConfig = {
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
-const navmiddleware = createReactNavigationReduxMiddleware('root', state => state.nav);
-const middlewares = [promiseMiddleWare, thunk, navmiddleware, screentraker];
-let combinedMiddleware = applyMiddleware(...middlewares)
+const navMiddleware = createReactNavigationReduxMiddleware('root', state => state.nav);
+let combinedMiddleware = [promiseMiddleWare, thunk, navMiddleware, screentraker]
 if (__DEV__) {
-  middlewares.push(logger);
-  combinedMiddleware = composeWithDevTools(combinedMiddleware)
+  if(haveReactNativeDebugger)
+    combinedMiddleware = composeWithDevTools(applyMiddleware(...combinedMiddleware))
+  else {
+    combinedMiddleware.push(logger)
+    combinedMiddleware = applyMiddleware(...combinedMiddleware)
+  }
 }
 export default store = createStore(persistedReducer, combinedMiddleware);
 export const persistor = persistStore(store);

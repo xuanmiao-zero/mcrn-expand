@@ -1,6 +1,6 @@
 {
-  "name": "mcrn",
-  "version": "1.6.3",
+  "name": "mcrn-expand",
+  "version": "1.7.3",
   "description": "RN For meicai",
   "main": "index.js",
   "scripts": {
@@ -8,9 +8,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xiongcaichang/MCRN.git"
+    "url": "git+https://github.com/xuanmiao-zero/mcrn-expand.git"
   },
-  "author": "xiongcaichang",
+  "author": "xuanmiaoshuo",
   "license": "MIT",
   "dependencies": {
     "react": "16.3.1",
@@ -39,7 +39,7 @@
     "redux-devtools-extension": "^2.13.7"
   },
   "bugs": {
-    "url": "https://github.com/xiongcaichang/MCRN/issues"
+    "url": "https://github.com/xuanmiao-zero/mcrn-expand/issues"
   },
   "homepage": "https://github.com/xiongcaichang/MCRN#readme"
 }
