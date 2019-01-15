@@ -17,7 +17,7 @@ import CSS_CONFIG from './css';
 import initialStorage from './storage';
 import { isIOS } from './device';
 import env from './env';
-
+import {StoreContext} from 'redux-react-hook';
 
 const NAVBAR_HEIGHT = isIOS ? 44 : 56;
 
@@ -42,8 +42,8 @@ class PublicCom extends Component {
           />
           {__DEV__ && <Text
             style={{ position: 'absolute', right: 15, width: 30, fontSize: 10, color: 'white', textAlign: 'center', borderRadius: 3, height: 15, bottom: 15, backgroundColor: 'pink' }} onPress={() => {
-              persistor.purge();
-            }}
+            persistor.purge();
+          }}
           >clear</Text>}
         </View>
       </ThemeProvider>
@@ -59,20 +59,23 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     NativeModules.ConfigModule &&
-      NativeModules.ConfigModule.setEnvOptions &&
-      NativeModules.ConfigModule.setEnvOptions(Object.keys(envConfig));
+    NativeModules.ConfigModule.setEnvOptions &&
+    NativeModules.ConfigModule.setEnvOptions(Object.keys(envConfig));
     Object.assign(env, envConfig[props.envKey || 'prod']);
   }
 
   render() {
     return (
-      <Provider store={store}>
-        <PublicCom>
-          <PersistGate loading={null} persistor={persistor}>
-            <AppWithNavigationState />
-          </PersistGate>
-        </PublicCom>
-      </Provider>
+      <StoreContext.Provider value={store}>
+        <Provider store={store}>
+          <PublicCom>
+            <PersistGate loading={null} persistor={persistor}>
+              <AppWithNavigationState />
+            </PersistGate>
+          </PublicCom>
+        </Provider>
+      </StoreContext.Provider>
+
     );
   }
 }
