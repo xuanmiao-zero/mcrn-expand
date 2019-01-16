@@ -5,7 +5,6 @@ import { Component, PureComponent, useEffect } from 'react';
 import { BackHandler } from 'react-native';
 import Toast from 'react-native-root-toast';
 import navigation from '../navigation';
-import store from '../store';
 
 function enhanceFunction(target) {
   const withEnhance = (props) => {

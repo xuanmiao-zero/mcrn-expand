@@ -1,21 +1,20 @@
 import { StackActions, NavigationActions } from 'react-navigation';
-import store from '../store';
 
 const navigation = {};
 const resetRoute = (routeName, params = {}, routeIndex = 0, key) => {
   if (routeName) {
     store.dispatch(
-            StackActions.reset({
-              index: routeIndex,
-              actions: [
-                NavigationActions.navigate({
-                  routeName,
-                  params,
-                  key,
-                }),
-              ],
-            })
-        );
+      StackActions.reset({
+        index: routeIndex,
+        actions: [
+          NavigationActions.navigate({
+            routeName,
+            params,
+            key,
+          }),
+        ],
+      })
+    );
   }
 };
 const push = (routeName, params = {}) => {

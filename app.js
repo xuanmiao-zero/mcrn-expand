@@ -6,13 +6,15 @@ import { View, Text, NativeModules } from 'react-native';
 import { Provider, connect } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { reduxifyNavigator } from 'react-navigation-redux-helpers';
+import DeviceInfo from 'react-native-device-info';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { ThemeProvider } from 'mcrn-ui';
 import Loading from 'mcrn-ui/Loading';
 import envConfig from 'MCConfig/Env';
+import mconnect from './mconnect';
 import store, { persistor } from './store';
 import AppNavigator from 'MCConfig/Navigator';
-import mconnect from './mconnect';
+import { sentryDsn, jsVersion } from 'MCConfig/app.json';
 import CSS_CONFIG from './css';
 import initialStorage from './storage';
 import { isIOS } from './device';
@@ -62,6 +64,13 @@ export default class App extends Component {
     NativeModules.ConfigModule.setEnvOptions &&
     NativeModules.ConfigModule.setEnvOptions(Object.keys(envConfig));
     Object.assign(env, envConfig[props.envKey || 'prod']);
+
+    if (sentryDsn) {
+      const { Sentry } = require('react-native-sentry');
+      Sentry.config(props.envKey === 'prod' ? sentryDsn.prod : sentryDsn.stage).install();
+      Sentry.setRelease(`${DeviceInfo.getReadableVersion()}`);
+      Sentry.setDist(`${jsVersion}`);
+    }
   }
 
   render() {

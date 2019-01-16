@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 
 const get = (object, path, defaultValue) => (!Array.isArray(path) ? path.replace(/\[/g, '.').replace(/\]/g, '').split('.') : path)
-          .reduce((o, k) => (o || {})[k], object) || defaultValue;
+  .reduce((o, k) => (o || {})[k], object) || defaultValue;
 
 export const getState = subscribedNodes => state => ({
   ...Object.keys(subscribedNodes).reduce(
