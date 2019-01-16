@@ -1,6 +1,6 @@
 {
   "name": "mcrn-expand",
-  "version": "1.7.4",
+  "version": "1.7.5",
   "description": "RN For meicai",
   "main": "index.js",
   "scripts": {
