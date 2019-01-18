@@ -1,8 +1,6 @@
 /* eslint-disable no-global-assign */
 import { connect } from 'react-redux';
-
-const get = (object, path, defaultValue) => (!Array.isArray(path) ? path.replace(/\[/g, '.').replace(/\]/g, '').split('.') : path)
-  .reduce((o, k) => (o || {})[k], object) || defaultValue;
+import { get } from 'lodash-core'
 
 export const getState = subscribedNodes => state => ({
   ...Object.keys(subscribedNodes).reduce(
