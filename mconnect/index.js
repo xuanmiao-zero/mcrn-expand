@@ -1,4 +1,5 @@
 /* eslint-disable no-global-assign */
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 import { get } from 'lodash-core'
 
@@ -12,18 +13,11 @@ export const getState = subscribedNodes => state => ({
   ),
 });
 
-export const getDispatch = dispatchobj => dispatch =>
-  Object.keys(dispatchobj)
-    .map(keys => ({
-      [keys]: (...args) => dispatch(dispatchobj[keys](...args)),
-    }))
-    .reduce((last, curr) => ({ ...last, ...curr }), {});
-
 export default mconnect = (
   stateKeys = null,
-  dispatchActions = null,
+  actions = null,
 ) => WrappedComponent =>
   connect(
     stateKeys ? () => getState(stateKeys) : null,
-    dispatchActions ? () => getDispatch(dispatchActions) : null,
+    actions ? dispatch => bindActionCreators(actions, dispatch) : null,
   )(WrappedComponent);
